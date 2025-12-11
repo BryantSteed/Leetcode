@@ -8,6 +8,7 @@ class Solution:
             self.total = total
 
     def numSquares(self, n: int) -> int:
+        """LeetCode 279: Perfect Squares"""
         squares = []
         for i in range(1, n+1):
             squared = i**2
@@ -39,6 +40,7 @@ class Solution:
     It reduces the problem to a knapsack type problem where we are trying to minimize"""
 
     def numSquares(self, n: int) -> int:
+        """LeetCode 279: Perfect Squares"""
         squares = []
         for i in range(1, n+1):
             squared = i**2
