@@ -92,7 +92,7 @@ def maxsubarray(arr: List[int], x: int, y: int, z: int) -> int:
             stack.append(child)
     return bssf
 
-# n = 10
+n = 10
 # nums = [i for i in range(n)]
 # x = 1
 # y = 1
