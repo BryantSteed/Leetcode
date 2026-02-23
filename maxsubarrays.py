@@ -66,23 +66,35 @@ class State:
             for pos in start_positions:
                 total += sum(arr[idx] for idx in range(pos, pos+length))
         return total
+    
+    def __str__(self):
+        return f"x {self.x_list} y {self.y_list} z {self.z_list}"
+    
+    def __hash__(self):
+        return hash(tuple([tuple(self.x_list), tuple(self.y_list), tuple(self.z_list)]))
 
 
 def maxsubarray(arr: List[int], x: int, y: int, z: int) -> int:
+    # computed = set()
     stack: List[State] = [State([],[],[])]
     bssf: int = 0
     while stack:
         state: State = stack.pop()
+        # computed.add(state)
         child_states: List[State] = state.expand(x, y, z, arr)
         for child in child_states:
+            # print(child)
+            # if child in computed:
+            #     print("Duplicated Computation")
             score = child.get_score(arr)
             if score > bssf:
                 bssf = score
             stack.append(child)
     return bssf
 
-nums = [1, 2, 3]
-x = 0
-y = 0
-z = 1
-print(maxsubarray(nums, x, y, z))
+n = 10
+nums = [i for i in range(n)]
+x = 1
+y = 1
+z = 0
+print(f"Solution: {maxsubarray(nums, x, y, z)}")
